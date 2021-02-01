@@ -10,6 +10,6 @@ Finally, start one or more workers: ```docker run -d --name spark-worker --netwo
 
 Assemble the Scala project using ```sbt assembly```.
 
-Submit the JAR file to the cluster by running ```docker run --rm -v /path/to/jar/:/spark-submit/ --name spark-submit --network spark-network bitnami/spark spark-submit --master spark://spark-master:7077 --class nl.rug.sc.app.SparkSubmitMain --deploy-mode client  /spark-submit/spark-bootcamp-assembly-0.1.jar```.
+Submit the JAR file to the cluster by running ```docker run --rm -v /path/to/jar/:/spark-submit-dir/ --name spark-submit --network spark-network bitnami/spark spark-submit --master spark://spark-master:7077 --class nl.rug.sc.app.SparkSubmitMain --deploy-mode client  /spark-submit-dir/spark-bootcamp-assembly-0.1.jar```.
 
 Of course, instead of directly mounting the directory into the container, the use of volumes would be preferred. Alternatively, it is possible to download Spark locally and use the submit script that comes with it to submit the application to the cluster. 
