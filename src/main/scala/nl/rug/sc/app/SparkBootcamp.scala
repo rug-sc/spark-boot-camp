@@ -1,7 +1,6 @@
 package nl.rug.sc.app
 
 import nl.rug.sc.SparkExample
-import nl.rug.sc.app.SparkLocalMain.sparkSession
 import org.apache.spark.sql.SparkSession
 
 trait SparkBootcamp { // A trait can be compared to a Java Interface

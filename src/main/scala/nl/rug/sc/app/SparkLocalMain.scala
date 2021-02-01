@@ -1,6 +1,5 @@
 package nl.rug.sc.app
 
-import nl.rug.sc.SparkExample
 import org.apache.spark.sql.SparkSession
 
 object SparkLocalMain extends App with SparkBootcamp {
@@ -12,7 +11,7 @@ object SparkLocalMain extends App with SparkBootcamp {
     .master(master)
     .getOrCreate()
 
-  override def pathToCsv = getClass.getResource("/csv/2014_us_cities.csv").getPath
+  override def pathToCsv: String = getClass.getResource("/csv/2014_us_cities.csv").getPath
 
   run() // Run is defined in the tait SparkBootcamp
 }

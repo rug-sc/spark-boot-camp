@@ -1,12 +1,12 @@
-name := "spark-bootcamp" // Project name
+name := "spark-bootcamp" // Project name.
 
-version := "0.1" // Project version
+version := "0.1" // Project version.
 
-organization := "nl.rug.sc" // Organization name, used when packaging
+organization := "nl.rug.sc" // Organization name, used when packaging.
 
-scalaVersion := "2.11.12" // Only 2.11.x and 2.10.x are supported
+scalaVersion := "2.12.13" // Spark 3.0 is based on Scala 2.12.
 
-val sparkVersion = "2.4.0" // Latest version
+val sparkVersion = "3.0.1" // Latest version.
 
 libraryDependencies ++= List(
   "org.apache.spark" %% "spark-core"      % sparkVersion % "provided", // Basic Spark library

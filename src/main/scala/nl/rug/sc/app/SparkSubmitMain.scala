@@ -1,27 +1,11 @@
 package nl.rug.sc.app
 
-import nl.rug.sc.app.SparkLocalMain.run
-import org.apache.spark.SparkFiles
-import org.apache.spark.launcher.SparkLauncher
 import org.apache.spark.sql.SparkSession
 
 object SparkSubmitMain extends App with SparkBootcamp {
   // How to Run:
   //
-  // * You must first download the Spark 2.2.1 archive (spark-2.2.1-bin-hadoop2.7.tgz) and extract it. Then, set the environment variable SPARK_HOME to the path of the extracted directory
-  // e.g. SPARK_HOME=/home/<youruser>/Downloads/spark-2.2.1-bin-hadoop2.7/
-  //
-  // * Create a Spark cluster, using Docker:
-  // > docker run -d --rm --name spark-master -p 4040:4040 -p 8080-8081:8080-8081 -p 7077:7077 briansetz/docker-spark:2.2.1 spark/sbin/start-master.sh
-  // > MASTER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' spark-master)
-  // > docker run -d --rm --name spark-slave briansetz/docker-spark:2.2.1 spark/sbin/start-slave.sh spark://${MASTER_IP}:7077
-  //
-  // * Create a .JAR file that is to be submitted to Spark using the sbt-assembly plugin (provided in this project)
-  // Run this command (in the root of this project) to create the jar:
-  // > sbt assembly
-  //
-  // * CD to the $SPARK_HOME/bin directory and run the following command:
-  // > ./spark-submit --class nl.rug.sc.app.SparkSubmitMain --deploy-mode client --master spark://localhost:7077 <your-path-to>/spark-bootcamp/target/scala-2.11/spark-bootcamp-assembly-0.1.jar
+  // See the instruction in the README.
 
   // IMPORTANT: running this command will actually fail the 'dataSetRealisticExample' example, other examples will complete. It will not be able to find the CSV file. The reason for this is that we are running on a remote Spark.
   // We use client mode, which means that the driver is running on this machine, but the computations are performed on the Spark workers. Since the driver is running on this machine,
@@ -43,7 +27,7 @@ object SparkSubmitMain extends App with SparkBootcamp {
     .appName("spark-bootcamp")
     .getOrCreate()
 
-  override def pathToCsv = getClass.getResource("/csv/2014_us_cities.csv").getPath
+  override def pathToCsv: String = getClass.getResource("/csv/2014_us_cities.csv").getPath
 
   run() // Run is defined in the tait SparkBootcamp
 }

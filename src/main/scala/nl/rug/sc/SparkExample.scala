@@ -10,7 +10,7 @@ class SparkExample(sparkSession: SparkSession, pathToCsv: String) {
   private val sparkContext = sparkSession.sparkContext
 
   /**
-    * An example using RDD's, try to avoid RDDs
+    * An example using RDDs, try to avoid RDDs.
     */
   def rddExample(): Unit = {
     val data = List(1, 2, 3, 4, 5)
